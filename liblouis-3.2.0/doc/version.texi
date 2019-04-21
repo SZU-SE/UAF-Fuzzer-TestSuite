@@ -1,0 +1,4 @@
+@set UPDATED 2 June 2017
+@set UPDATED-MONTH June 2017
+@set EDITION 3.2.0
+@set VERSION 3.2.0

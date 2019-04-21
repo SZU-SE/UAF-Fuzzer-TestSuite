@@ -1,0 +1,1 @@
+rule t{strings:$="0"condition:for 0}rule I{strings:$={00}$="0"condition:for 0 0rule H{meta:h=""strings:$0={00}condition:for any of($0):

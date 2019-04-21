@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+tablesdir=${prefix}/share/liblouis/tables
+
+Name: liblouis
+Description: a braille translator and back-translator
+Version: 3.2.0
+Requires: 
+Libs: -L${libdir} -llouis
+Cflags: -I${includedir}/liblouis
