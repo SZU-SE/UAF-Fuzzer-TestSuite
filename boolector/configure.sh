@@ -6,7 +6,7 @@ BUILDDIR=build
 #--------------------------------------------------------------------------#
 
 asan=no
-debug=no
+debug=yes
 check=no
 log=no
 shared=no

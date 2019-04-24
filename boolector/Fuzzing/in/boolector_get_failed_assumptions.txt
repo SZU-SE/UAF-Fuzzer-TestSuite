@@ -1,6 +1,0 @@
-;(assert#b0)(check-sat)(get-unsat-assumptions)(get-unsat-assumptions)
-
-(assert#b0)
-(check-sat)
-(get-unsat-assumptions)
-(get-unsat-assumptions)
