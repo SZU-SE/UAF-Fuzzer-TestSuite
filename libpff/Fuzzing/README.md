@@ -6,6 +6,7 @@
 git clone https://github.com/libyal/libpff.git
 git checkout 4938b7a891c6ec2112e5f059e13426915ae49adb
 ```
+- Reproduce: ```./pffexport $POC```
 - ASAN:
 ```
 =================================================================
