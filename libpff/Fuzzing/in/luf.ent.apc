@@ -1,0 +1,35 @@
+﻿{To create an external lookup file to check ID codes
+
+Purpose:
+To create an external lookup file containing the valid batch identification codes.
+This file will be used as an external file to check against the codes being added
+or verified.
+
+Task:
+Use CSEntry to create an external lookup file of valid batch identification codes.
+In this example a batch is identified by the Province, District, Village, and EA codes.
+The lookup file must also have room to enter the system's date and operator's ID for
+Add and Verify mode.
+
+Files:
+Input dictionary:       LUF.DCF
+Input data file:        User specified file name. For this example use LUF.DAT
+
+Program:
+The data entry application LUF.ENT is used to enter the batch ID codes.
+The program inserts an "*" at the end of the record to limit the size of the record.
+}
+
+PROC GLOBAL
+
+
+PROC ASTERISK
+
+
+PROC LUF_FF
+
+
+PROC LEA
+
+	asterisk = "*";
+

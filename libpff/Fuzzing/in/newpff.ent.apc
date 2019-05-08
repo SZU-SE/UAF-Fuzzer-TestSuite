@@ -1,0 +1,250 @@
+﻿{Create a PFF file
+Purpose:
+To create a customized PFF file to launch CSEntry for an specific data entry application batch
+in add or verify mode. The PFF data entry application uses an external data file (LUF.DAT) to
+check valid ID codes.
+
+This program customizes a PFF file to:
+   . determine the data entry mode (either Add or Verify)
+   . lock a data entry mode (either Add or Verify)
+   . log the operator identification code
+   . invoke the name of a data entry application (Census 2000 Data Entry.ent)
+   . generate a name for the data file based on the ID fields (Province, District, Village, EA)
+	 (i.e.province=01,district=01,village=001,enumeration area=005 ==> name = 0101001005.dat)
+   . initialize the ID fields in the data entry application
+
+Task:
+Use CSEntry to create a customized PFF file to add or verify a data entry batch for the Census
+Data Entry application.  Use a lookup file to determine if batch is valid.  The PFF file
+created must open up the data entry application and initialize the ID fields.
+
+Files:
+Input dictionary:       NEWPFF.DCF
+Input data file:        User specified file name.  You must create two data files: one for
+						adding and another one for verifying. CsPro does not allow to enter
+						duplicate ID codes.
+
+External dictionary:    LUF.DCF
+External data file:     Name of data file created in Part 1. For this example use LUF.DAT
+
+Write file:             User specified file name but MUST have extension .PFF.
+
+CSPro Keywords:
+Function, Loadcase, Mode, Reenter, Concat, Edit, Write, Errmsg
+
+Program
+
+The data entry application NEWPFF.ENT is used to enter the mode and batch ID codes. These codes
+are moved to the corresponding ID fields in the Lookup file.  The Loadcase function reads the
+ID from the external file into memory.  If case is found, the function returns a "1" and calls
+Function ID_FOUND; otherwise it returns a "0" and calls Function ID_NOT_FOUND.
+
+The Function ID_FOUND checks the mode.
+   If mode is "A" (Add) then the program checks status of data entry date in lookup file.
+	  If data entry date is blank, then the batch has not been entered. The program
+		 - generates the data file name based on the ID fields
+		 - moves the data entry system's date and operator's ID to the lookup file
+		 - calls Function WRITE_LOOKUP_FILE_DATA to write the PFF file with the parameters
+		 If data entry date is filled then
+			The program displays error message indicating that batch has already been entered
+			and operator is forced to re-enter the ID.
+   If mode is "V" (Verify) then the program checks status of verified date in lookup file.
+	  If verified date is blank, then program checks status of data entry date in lookup file.
+		 If data entry date is filled then the batch has not been verified.  The program
+			- generates the data file name based on the ID fields
+			- moves the verified system's date and operator's ID to the lookup file
+			- calls Function WRITE_LOOKUP_FILE_DATA to write the PFF file with the parameters
+			If data entry date is blank, then
+			   The program displays error message indicating that batch has not been keyed
+			   and operator is forced to re-enter the ID.
+			If verified date is filled, then
+			   The program displays error message indicating that batch has already been
+			   verified and operator is forced to re-enter the ID.
+
+The Function ID_NOT_FOUND displays an error message indicating that case has not been found and
+operator is forced to re-enter the ID.
+
+The Function WRITE_LOOKUP_FILE_DATA uses a series of WRITE functions to write the PFF file with
+the parameters entered for Add or Verify mode.
+
+NOTE: You can only enter one record each time you run this application.
+
+After PFF is created you can run it from Windows Explorer.  The screen will display the
+Census Data Entry application.  The ID codes will be filled and will match the name
+of the data file. }
+
+PROC GLOBAL
+
+numeric flgFOUND,flgOK;
+
+{-----------------------------------------------------------------------------------}
+
+
+function ID_FOUND()
+
+	if MODE in "a", "A" then
+		{if add mode check if date in lookup file has been entered.
+		If not blank, then batch has already been keyed}
+		if KEYDATE = " " then
+			flgOK = 1;
+		else
+			errmsg("Batch %02d%02d%03d%03d, was already keyed by operator %02d",PROVINCE,DISTRICT,VILLAGE,EA,KEYID);
+			reenter PROVINCE;
+		endif;
+	else
+		{if verify mode check if date in lookup file has been entered. If not blank, then
+		batch has already been verified.  If blank, check if keying date has been entered.
+		If blank, then batch has not been keyed yet}
+		if VERDATE = " " then
+			if KEYDATE = " " then
+				errmsg ("Batch %02d%02d%03d%03d has not been keyed",PROVINCE, DISTRICT, VILLAGE, EA);
+				reenter PROVINCE;
+			else
+				flgOK = 1;
+			endif;
+		else
+			errmsg("Batch %02d%02d%03d%03d, was already verified by operator %02d",PROVINCE, DISTRICT, VILLAGE, EA, VERID);
+			reenter PROVINCE;
+		endif;
+	endif;
+end;
+
+{------------------------------------------------------------------------------------}
+
+
+function ID_NOT_FOUND()
+
+	{id not found;display a message and then reenter the ID files beginning with province.}
+	errmsg ("Invalid ID: %02d%02d%03d%03d", PROVINCE, DISTRICT, VILLAGE, EA);
+	reenter PROVINCE;
+
+end;
+
+{-----------------------------------------------------------------------------------}
+
+
+function WRITE_LOOKUP_FILE_DATA();
+
+	{write all the fields to the lookup file}
+	writecase(LUF_DICT);
+
+	{write PFF commands}
+	write("[Run Information]");
+	write("Version=CSPro 7.1");
+	write("AppType=Entry");
+
+	write (" ");
+	write("[DataEntryInit]");
+	write("Interactive=Ask");
+
+	{Write operator ID entered in the application}
+	if mode = "a" or mode = "A" then
+		write("OperatorID=%d",keyid);
+		write("Startmode=Add");
+		write("Lock=Verify,Stats");
+	else
+		write("OperatorID=%d",verid);
+		write("Startmode=Verify");
+		write("Lock=Add,Stats");
+	endif;
+
+	write("Fullscreen=Yes");
+	write (" ");
+	write("[Files]");
+	write("Application=.\Census Data Entry.ent");
+
+	{Write file name based on ID fields}
+	write("InputData=.\%s",File_Name);
+	write(" ");
+	write("[DataEntryIds]");
+
+	{Initialize ID fields in Census 2000 Data Entry.ent}
+	write("Province=%d",province);
+	write("District=%d",district);
+	write("Village=%d",village);
+	write("EA=%d",ea);
+	write("UR=%d",ur);
+
+end;
+
+{-----------------------------------------------------------------------------------------}
+
+
+PROC NEWPFF_FF
+
+{=========================================================================================}
+
+
+PROC MODE
+
+	{Enter mode: add or verify}
+	if MODE in "A", "a", "V", "v" then
+		flgOK = 0;
+	else
+		flgOK = 1;
+		errmsg ("You must enter A or V");
+		reenter;
+	endif;
+
+{----------------------------------------------------------------------------------------}
+
+
+PROC PROVINCE
+
+	{Move the fields that were entered by the keyer into the id fields of the lookup file}
+	lPROVINCE = PROVINCE;
+
+{----------------------------------------------------------------------------------------}
+
+
+PROC DISTRICT
+
+	lDISTRICT = DISTRICT;
+
+	{----------------------------------------------------------------------------------------}
+
+
+PROC VILLAGE
+
+	lVILLAGE = VILLAGE;
+
+	{----------------------------------------------------------------------------------------}
+
+
+PROC EA
+
+	lEA = EA;
+
+	{Perform the lookup once the EA has been entered. }
+	{All ID data is availble at this point.}
+
+	flgFOUND = loadcase(luf_dict,lPROVINCE,lDISTRICT,lVILLAGE,lEA);
+
+	if flgFOUND = 1 then
+		ID_FOUND();
+	else
+		ID_NOT_FOUND();
+	endif;
+
+	{Create file name using the ID fields}
+	if flgOK = 1 then
+		FILE_NAME = concat(edit("99",PROVINCE),edit("99",DISTRICT),edit("999",VILLAGE),edit("999",EA),".dat");
+	endif;
+
+{----------------------------------------------------------------------------------------}
+
+
+PROC OPID
+
+	{Enter the system date and operator ID in the lookup file for adding or verifying mode}
+	if MODE = "a" or mode = "A" then
+		KEYDATE = edit("99/99/9999", sysdate("ddmmyyyy"));
+		KEYID   = opid;
+	else
+		VERDATE = edit("99/99/9999", sysdate("ddmmyyyy"));
+		VERID   = opid;
+	endif;
+
+	WRITE_LOOKUP_FILE_DATA();
+
+

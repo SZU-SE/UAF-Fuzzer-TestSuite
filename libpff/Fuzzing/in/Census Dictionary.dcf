@@ -1,0 +1,915 @@
+﻿[Dictionary]
+Version=CSPro 7.1
+Label=Popstan Census
+Name=POPCEN
+RecordTypeStart=1
+RecordTypeLen=1
+Positions=Relative
+ZeroFill=Yes
+DecimalChar=No
+
+[Level]
+Label=Questionnaire
+Name=QUEST
+
+[IdItems]
+
+[Item]
+Label=Province
+Name=PROVINCE
+Start=2
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Province
+Name=PROV_VS1
+Value=1;Artesia
+Value=2;Copal
+Value=3;Dari
+Value=4;Eris
+Value=5;Girda
+Value=6;Hali
+Value=7;Kerac
+Value=8;Lacuna
+Value=9;Laya
+Value=10;Lira
+Value=11;Matanga
+Value=12;Patan
+Value=13;Rift
+Value=14;Terra
+Value=15;Tumar
+
+[Item]
+Label=District
+Name=DISTRICT
+Start=4
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=District
+Name=DIST_VS1
+Value=1:18
+
+[Item]
+Label=Village
+Name=VILLAGE
+Start=6
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Village
+Name=VILLAGE_VS1
+Value=1:999
+
+[Item]
+Label=Enumeration area
+Name=EA
+Start=9
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Enumeration area
+Name=EA_VS1
+Value=1:999
+
+[Item]
+Label=Urban/Rural
+Name=UR
+Start=12
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Urban/Rural
+Name=UR_VS1
+Value=1;Urban
+Value=2;Rural
+
+[Item]
+Label=Building number
+Name=BUILDING
+Start=13
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Building number
+Name=BUILDING_VS1
+Value=1:998;Building
+Value=999;Homeless
+
+[Item]
+Label=Housing unit
+Name=HU
+Start=16
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Housing unit
+Name=HU_VS1
+Value=1:999
+
+[Item]
+Label=Household number
+Name=HH
+Start=19
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household number
+Name=HH_VS1
+Value=1:9
+
+[Record]
+Label=Person Record
+Name=PERSON
+RecordTypeValue='1'
+Required=No
+MaxRecords=30
+RecordLen=49
+
+[Item]
+Label=Line number
+Name=LINE
+Start=20
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Line number
+Name=LINE_VS1
+Value=1:30
+
+[Item]
+Label=Relationship
+Name=P02_REL
+Start=22
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Relationship
+Name=P02_REL_VS1
+Value=1;Head
+Value=2;Spouse
+Value=3;Child
+Value=4;Parent
+Value=5;Other relative
+Value=6;Nonrelative
+Value=9;Not Reported
+
+[Item]
+Label=Sex
+Name=P03_SEX
+Start=23
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Sex
+Name=P03_SEX_VS1
+Value=1;Male
+Value=2;Female
+
+[Item]
+Label=Age
+Name=P04_AGE
+Start=24
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Age
+Name=P04_AGE_VS1
+Value=0:98
+
+[ValueSet]
+Label=Age in 5 year groups
+Name=P04_AGE_VS2
+Value=0:4;0 to 4 years
+Value=5:9;5 to 9 years
+Value=10:14;10 to 14 years
+Value=15:19;15 to 19 years
+Value=20:24;20 to 24 years
+Value=25:29;25 to 29 years
+Value=30:34;30 to 34 years
+Value=35:39;35 to 39 years
+Value=40:44;40 to 44 years
+Value=45:49;45 to 49 years
+Value=50:54;50 to 54 years
+Value=55:59;55 to 59 years
+Value=60:64;60 to 64 years
+Value=65:69;65 to 69 years
+Value=70:74;70 to 74 years
+Value=75:79;75 to 79 years
+Value=80:84;80 to 84 years
+Value=85:89;85 to 89 years
+Value=90:94;90 to 94 years
+Value=95:98;95 years and over
+
+[ValueSet]
+Label=Age in 10 year groups
+Name=P04_AGE_VS3
+Value=0:9;0 to 9 years
+Value=10:19;10 to 19 years
+Value=20:29;20 to 29 years
+Value=30:39;30 to 39 years
+Value=40:49;40 to 49 years
+Value=50:59;50 to 59 years
+Value=60:69;60 to 69 years
+Value=70:79;70 to 79 years
+Value=80:89;80 to 89 years
+Value=90:98;90 years and over
+
+[ValueSet]
+Label=Age 10-54 in 5 year groups
+Name=AGG_10_5
+Value=10:14;10 to 14 years
+Value=15:19;15 to 19 years
+Value=20:24;20 to 24 years
+Value=25:29;25 to 29 years
+Value=30:34;30 to 34 years
+Value=35:39;35 to 39 years
+Value=40:44;40 to 44 years
+Value=45:49;45 to 49 years
+Value=50:54;50 to 54 years
+
+[Item]
+Label=Marital status
+Name=P05_MS
+Start=26
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Marital status
+Name=P05_MS_VS1
+Value=1;Married
+Value=2;Divorced
+Value=3;Separated
+Value=4;Widowed
+Value=5;Never Married
+
+[Item]
+Label=Mother living
+Name=P06_MOTHER
+Start=27
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Mother living
+Name=P06_MOTHER_VS1
+Value=1;Yes
+Value=2;No
+Value=3;Don't know
+
+[Item]
+Label=Place of birth
+Name=P07_BIRTH
+Start=28
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Place of birth
+Name=P07_BIRTH_VS1
+Value=1:15;Popstan
+Value=21;Endar
+Value=22;Victoria
+Value=23:27;Africa
+Value=40:44;Middle East
+Value=50:53;Asia
+Value=70:74;Europe
+Value=80:84;Americas
+Value=0;Not Reported
+
+[Item]
+Label=Residence in 1995
+Name=P08_RES95
+Start=30
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Residence in 1995
+Name=P08_RES95_VS1
+Value=1:15;Popstan
+Value=21;Endar
+Value=22;Victoria
+Value=23:27;Africa
+Value=40:44;Middle East
+Value=50:53;Asia
+Value=70:74;Europe
+Value=80:84;Americas
+Value=0;Unknown
+Value='  ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Attending school
+Name=P09_ATTEND
+Start=32
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Attending school
+Name=P09_ATTEND_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Highest grade completed
+Name=P10_HIGH_GR
+Start=33
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Highest grade completed
+Name=P10_HIGH_GR_VS1
+Value=0;None
+Value=1:5;Primary
+Value=6:8;Middle School
+Value=9:12;High School
+Value=13:30;University
+Value=31:36;Technical
+Value=99;Not Reported
+Value='  ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Literacy
+Name=P11_LITERACY
+Start=35
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Literacy
+Name=P11_LITERACY_VS1
+Value=1;Literate
+Value=2;Illerate
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Working
+Name=P12_WORKING
+Start=36
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Working
+Name=P12_WORKING_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Looking for work
+Name=P13_LOOKING
+Start=37
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Looking for work
+Name=P13_LOOKING_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Why not looking for work
+Name=P14_WHY_NOT
+Start=38
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Why not looking for work
+Name=P14_WHY_NOT_VS1
+Value=1;Had job
+Value=2;Believed job not available
+Value=3;Did not want job
+Value=4;Doing own housework
+Value=5;Going to school
+Value=6;Other
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Occupation
+Name=P15_OCC
+Start=39
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Occupation
+Name=P15_OCC_VS1
+Value=1;Medical
+Value=2;Accountants
+Value=10:13;Artist Technical
+Value=20:21;Admin Managerial
+Value=30:34;Clerical Office
+Value=40:43;Sales Workers
+Value=50:54;Service Workers
+Value=60:65;Farmers, Fishers
+Value=70:79;Production Work
+Value=80:83;Transport Worker
+Value=90:92;Construction Trades
+Value=95;Other
+Value=99;Not Reported
+Value='  ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Occupation (major groups)
+Name=P15A_OCC
+Start=39
+Len=1
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Occupation (major groups)
+Name=P15A_OCC_VS1
+Value=0;Social or personal Services
+Value=1;Professional, Technical
+Value=2;Public Administration
+Value=3;Clerical
+Value=4;Wholesale or Retail Industry
+Value=5;Service
+Value=6;Farming, Forestry, Fishing, Hunting
+Value=7;Tradesmen/Craftsmen
+Value=8;Transportation
+Value=9;Construction, other, not reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Industry
+Name=P16_IND
+Start=41
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Industry
+Name=P16_IND_VS1
+Value=10;Hunting
+Value=11;Agriculture
+Value=12;Forestry
+Value=13;Fishing
+Value=20;Mining Quarrying
+Value=30;Food manufacture
+Value=31;Beverage Tobacco
+Value=32;Machinery Mfg
+Value=33;Wood products
+Value=34;Paper products
+Value=35;Chemical Petrol
+Value=36;Non-metal Manufa
+Value=37;Metal Industries
+Value=39;Jewelry Mfg
+Value=40;Energy supplies
+Value=41;Waterworks
+Value=42;Natural Gas Supply
+Value=43;Sanitation Services
+Value=50;Construction
+Value=60;Wholesale Trade
+Value=61;Retail Trade
+Value=62;Hotels, Restaurants
+Value=70;Transport
+Value=71;Storage
+Value=72;Communication
+Value=80;Financial Banks
+Value=81;Insurance
+Value=82;Real Estate
+Value=83;Business Service
+Value=90;Public Admin
+Value=91;Education
+Value=92;Medical Dental
+Value=93;Social Community
+Value=94;Recrtn Cultural
+Value=95;Personal HHold
+Value=98;Other
+Value=99;Not Reported
+Value='  ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Industry (major groups)
+Name=P16A_IND
+Start=41
+Len=1
+ItemType=SubItem
+ZeroFill=Yes
+
+[ValueSet]
+Label=Industry (major groups)
+Name=P16A_IND_VS1
+Value=0;Social or Personal Services
+Value=1;Farming, Forestry, Fishing, Hunting
+Value=2;Mining, Quarrying
+Value=3;Manufacturing
+Value=4;Utilities (Electricity, Gas, Water, Sanitation)
+Value=5;Construction
+Value=6;Commerce
+Value=7;Transport, Storage, Communication
+Value=8;Financing, Business Services
+Value=9;Public Administration and not reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Work Status
+Name=P17_WK_STATUS
+Start=43
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Work Status
+Name=P17_WK_STATUS_VS1
+Value=1;Employer
+Value=2;Paid employee
+Value=3;Self-employed
+Value=4;Unpaid family worker
+Value=5;Other
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Economically active
+Name=ECON_ACTIVE
+Start=44
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Economically active
+Name=ECON_ACTIVE_VS1
+Value=1;Yes
+Value=2;No
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Number of children born alive
+Name=P18_BORN
+Start=45
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of children born alive
+Name=P18_BORN_VS1
+Value=0;None
+Value=1;1
+Value=2;2
+Value=3;3
+Value=4;4
+Value=5;5
+Value=6;6
+Value=7;7
+Value=8;8
+Value=9;9
+Value=10:20;10+
+Value=99;Not Reported
+Value='  ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Number of children still living
+Name=P19_LIVING
+Start=47
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of children still living
+Name=P19_LIVING_VS1
+Value=0;None
+Value=1;1
+Value=2;2
+Value=3;3
+Value=4;4
+Value=5;5
+Value=6;6
+Value=7;7
+Value=8;8
+Value=9;9
+Value=10:20;10+
+Value=99;Not Reported
+Value='  ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Number of children born in last 12 months
+Name=P20_BORN12
+Start=49
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of children born in last 12 months
+Name=P20_BORN12_VS1
+Value=0:3
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Record]
+Label=Housing Record
+Name=HOUSING
+RecordTypeValue='2'
+RecordLen=38
+
+[Item]
+Label=Type of housing
+Name=H01_TYPE
+Start=20
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of housing
+Name=H01_TYPE_VS1
+Value=1;Single family
+Value=2;Multi-family
+Value=3;Improvised
+Value=4;Mobile
+Value=5;Collective quarters
+Value=6;Homeless (none)
+Value=9;Not reported
+
+[Item]
+Label=Wall type
+Name=H02_WALL
+Start=21
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Wall type
+Name=H02_WALL_VS1
+Value=1;Stone/Cement
+Value=2;Metal
+Value=3;Wood
+Value=4;Bamboo/Mud/Reed
+Value=5;Other
+Value=6;None
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Roof type
+Name=H03_ROOF
+Start=22
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Roof type
+Name=H03_ROOF_VS1
+Value=1;Stone/Cement
+Value=2;Metal
+Value=3;Wood
+Value=4;Bamboo/Mud/Reed
+Value=5;Other
+Value=6;None
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Floor type
+Name=H04_FLOOR
+Start=23
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Floor type
+Name=H04_FLOOR_VS1
+Value=1;Stone/Cement
+Value=2;Tile/Marble
+Value=3;Wood
+Value=4;Leaves/Reed
+Value=5;Other
+Value=6;None
+Value=9;Not Reported
+Value=' ';Not Applicable
+Name=MISSING,Special
+
+[Item]
+Label=Number of rooms
+Name=H05_ROOMS
+Start=24
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of rooms
+Name=H05_ROOMS_VS1
+Value=1;01
+Value=2;02
+Value=3;03
+Value=4;04
+Value=5;05
+Value=6;06
+Value=7;07
+Value=8;08
+Value=9;09
+Value=10;10
+Value=11;11
+Value=12;12
+Value=13;13
+Value=14;14
+Value=15;15
+Value=16;16
+Value=17;17
+Value=18;18
+Value=19;19
+Value=20;20
+Value=99;Not reported
+Value='  ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Tenure
+Name=H06_TENURE
+Start=26
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Tenure
+Name=H06_TENURE_VS1
+Value=1;Owned
+Value=2;Paid rent
+Value=3;Rent free
+Value=4;Vacant
+Value=9;Not reported
+Value=' ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Amount of rent paid
+Name=H07_RENT
+Start=27
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Amount of rent paid
+Name=H07_RENT_VS1
+Value=0:998
+Value=999;Not reported
+Value='   ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Type of toilet facilities
+Name=H08_TOILET
+Start=30
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of toilet facilities
+Name=H08_TOILET_VS1
+Value=1;Private toilet
+Value=2;Shared toilet
+Value=3;Outhouse
+Value=4;Pit
+Value=5;Other
+Value=6;None
+Value=9;Not reported
+Value=' ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Type of bathing facilities
+Name=H09_BATH
+Start=31
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of bathing facilities
+Name=H09_BATH_VS1
+Value=1;Exclusive
+Value=2;Shared
+Value=3;Hand basin
+Value=4;Portable tub or basin
+Value=5;Other
+Value=6;None
+Value=9;Not reported
+Value=' ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Source of water
+Name=H10_WATER
+Start=32
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Source of water
+Name=H10_WATER_VS1
+Value=1;Inside piped
+Value=2;Outside piped
+Value=3;Bottled or canned
+Value=4;Closed well or closed spring
+Value=5;Open well or spring
+Value=6;River/Stream/Other
+Value=9;Not reported
+Value=' ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Fuel for lighting
+Name=H11_LIGHT
+Start=33
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Fuel for lighting
+Name=H11_LIGHT_VS1
+Value=1;Electric
+Value=2;Gas
+Value=3;Kerosene
+Value=4;Candle/Tallow
+Value=5;Other
+Value=6;None
+Value=9;Not reported
+Value=' ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Fuel for cooking
+Name=H12_FUEL
+Start=34
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Fuel for cooking
+Name=H12_FUEL_VS1
+Value=1;Electricity
+Value=2;Gas
+Value=3;Kerosene or oil
+Value=4;Coal or charcoal
+Value=5;Wood
+Value=6;Other
+Value=7;None
+Value=9;Not reported
+Value=' ';Not applicable
+Name=MISSING,Special
+
+[Item]
+Label=Number of persons in the household
+Name=H13_PERSONS
+Start=35
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of persons in the household
+Name=H13_PERSONS_VS1
+Value=0;None
+Value=1;1 person
+Value=2;2 persons
+Value=3;3 persons
+Value=4;4 persons
+Value=5;5 persons
+Value=6;6 persons
+Value=7;7 persons
+Value=8;8 persons
+Value=9;9 persons
+Value=10:9999;10+ persons

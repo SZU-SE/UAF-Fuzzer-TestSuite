@@ -1,0 +1,14 @@
+[Run Information]
+Version=CSPro 7.1
+AppType=Entry
+
+[DataEntryInit]
+Interactive=Ask
+
+[Files]
+Application=.\luf.ent
+InputData=.\luf.dat
+
+
+[Parameters]
+

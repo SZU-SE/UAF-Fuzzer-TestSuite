@@ -1,0 +1,17 @@
+﻿[Run Information]
+Version=CSPro 7.1
+AppType=Entry
+
+[DataEntryInit]
+Interactive=Ask
+
+[Files]
+Application=.\newpff.ent
+InputData=.\vtest.dat
+WriteData=.\test.pff
+
+[ExternalFiles]
+LUF_DICT=.\luf.dat
+
+[Parameters]
+

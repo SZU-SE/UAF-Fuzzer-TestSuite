@@ -1,0 +1,15 @@
+﻿[CSPro Application]
+Version=CSPro 7.1
+Label=CENSUS_DATA_ENTRY
+Name=CENSUS_DATA_ENTRY
+AppType=DataEntry
+[AppCode]
+File=.\Census Data Entry.ent.apc
+[Message]
+File=.\Census Data Entry.ent.mgf
+[Help]
+File=.\Census Data Entry.ent.qsf
+[Forms]
+File=.\Census Data Entry.fmf
+[Dictionary Types]
+Dict-Type=.\Census Dictionary.dcf,Input,.\Census Data Entry.fmf

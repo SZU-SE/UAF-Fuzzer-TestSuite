@@ -1,0 +1,19 @@
+﻿[CSPro Application]
+Version=CSPro 7.1
+Label=NEWPFF
+Name=NEWPFF
+AppType=DataEntry
+OperatorID=No
+[External Dictionaries]
+File=.\luf.dcf
+[AppCode]
+File=.\newpff.ent.apc
+[Message]
+File=.\newpff.ent.mgf
+[Help]
+File=.\newpff.ent.qsf
+[Forms]
+File=.\newpff.fmf
+[Dictionary Types]
+Dict-Type=.\luf.dcf,External
+Dict-Type=.\newpff.dcf,Input,.\newpff.fmf

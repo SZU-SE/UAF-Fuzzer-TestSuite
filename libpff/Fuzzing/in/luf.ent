@@ -1,0 +1,16 @@
+﻿[CSPro Application]
+Version=CSPro 7.1
+Label=LUF
+Name=LUF
+AppType=DataEntry
+OperatorID=No
+[AppCode]
+File=.\luf.ent.apc
+[Message]
+File=.\luf.ent.mgf
+[Help]
+File=.\luf.ent.qsf
+[Forms]
+File=.\luf.fmf
+[Dictionary Types]
+Dict-Type=.\luf.dcf,Input,.\luf.fmf

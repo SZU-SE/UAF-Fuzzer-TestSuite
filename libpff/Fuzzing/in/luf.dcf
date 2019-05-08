@@ -1,0 +1,84 @@
+﻿[Dictionary]
+Version=CSPro 7.1
+Label=luf
+Name=LUF_DICT
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Absolute
+ZeroFill=Yes
+DecimalChar=Yes
+
+[Level]
+Label=luf questionnaire
+Name=LUF_QUEST
+
+[IdItems]
+
+[Item]
+Label=LPROVINCE
+Name=LPROVINCE
+Start=1
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=LDISTRICT
+Name=LDISTRICT
+Start=3
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=LVILLAGE
+Name=LVILLAGE
+Start=5
+Len=3
+ZeroFill=Yes
+
+[Item]
+Label=LEA
+Name=LEA
+Start=8
+Len=3
+ZeroFill=Yes
+
+[Record]
+Label=luf record
+Name=LUF_REC
+RecordTypeValue=''
+RecordLen=37
+
+[Item]
+Label=Date keyed
+Name=KEYDATE
+Start=11
+Len=10
+DataType=Alpha
+
+[Item]
+Label=Keyer ID
+Name=KEYID
+Start=21
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Date verified
+Name=VERDATE
+Start=24
+Len=10
+DataType=Alpha
+
+[Item]
+Label=Verifier ID
+Name=VERID
+Start=34
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Asterisk
+Name=ASTERISK
+Start=37
+Len=1
+DataType=Alpha
