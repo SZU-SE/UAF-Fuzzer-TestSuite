@@ -52,7 +52,7 @@ git checkout 0874a185cd98711b3e4a0b1a0c10e858ff4a23e6
 git clone https://github.com/libyal/libpff.git
 git checkout 4938b7a891c6ec2112e5f059e13426915ae49adb
 ```
-- Reproduce: ```./pffexport $POC```
+- Reproduce: ```./pffinfo $POC```
 - Note: Compile failed
 
 ### 6. GNU cflow 1.6 [[Detail Info]](./cflow-1.6/Fuzzing/README.md)
