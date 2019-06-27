@@ -2,7 +2,7 @@
 - Bug type: use-after-free
 - Reference 1: https://github.com/cesanta/mjs/issues/73
 - Reference 2: https://github.com/cesanta/mjs/issues/78
-- Install：`clang mjs.c -DMJS_MAIN -fsanitize=address -g -o mjs`
+- Install：`clang mjs.c -DMJS_MAIN -fsanitize=address -g -o mjs.out -ldl`
 - Reproduce: `mjs_exe file`
 - ASAN dumps the backtrace: 
 ```

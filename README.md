@@ -92,14 +92,28 @@ make sanitize
 - Reproduce: muraster $POC
 
 
-### 10. NASM 2.14.02 [[Detail Info]](./nasm/Fuzzing/README.md)
+### 10. NASM 2.14.02 [[Detail Info]](./nasm2.14.02/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2019-8343](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8343), [CVE-2018-20535](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20535), [CVE-2018-20538](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20538)
-- Download: https://repo.or.cz/w/nasm.git
-- Reproduce: `./nasm -f bin $POC -o /dev/null`
+- Download:
+  ```
+  git clone git://repo.or.cz/nasm.git
+  git checkout 74246c499ea4313fb8837977dc0c135fc50567c0
+  ```
+- Reproduce: `./nasm -f bin $POC -o ./tmp`
+
+### 11. NASM 2.14rc0 [[Detail Info]](./nasm2.14rc0/Fuzzing/README.md)
+- Bug type: use-after-free
+- CVE ID: [CVE-2019-8343](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8343), [CVE-2018-20535](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20535), [CVE-2018-20538](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20538), [CVE-2017-17820](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17820), [CVE-2017-17817](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17817), [CVE-2017-17816](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17814](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17813](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816)
+- Download: 
+  ```
+  git clone git://repo.or.cz/nasm.git
+  git checkout 7a81ead31b40392e9b0dff811ac0d3d4653ccfef
+  ```
+- Reproduce: `./nasm -f bin $POC -o ./tmp`
 
 
-### 11. Binutils 2.31.51.20190109 [[Detail Info]](./binutils-2.31.51/Fuzzing/README.md)
+### 12. Binutils 2.31.51.20190109 [[Detail Info]](./binutils-2.31.51/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2018-20623](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20623)
 - Download: 
@@ -110,14 +124,14 @@ git checkout 923c6a756476f3a1f92d6625aacbbf5253b7739b
 - Reproduce: `./readelf -a $POC`
 
 
-### 12. Binutils 2.28 [[Detail Info]](./binutils-2.28/Fuzzing/README.md)
+### 13. Binutils 2.28 [[Detail Info]](./binutils-2.28/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2017-6966](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6966)
 - Download: https://ftp.gnu.org/gnu/binutils/
 - Reproduce: `./readelf -w $POC`
 
 
-### 13. lrzip [[Detail Info]](./lrzip/Fuzzing/README.md)
+### 14. lrzip [[Detail Info]](./lrzip/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2018-11496](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11496)
 - Download: https://github.com/ckolivas/lrzip
@@ -128,7 +142,7 @@ git checkout ed51e14a4b7e921cd5e633100ec7403e120f6477
 - Reproduce: `./lrzip -t $POC`
 
 
-### 14. jpegoptim [[Detail Info]](./jpegoptim/Fuzzing/README.md)
+### 15. jpegoptim [[Detail Info]](./jpegoptim/Fuzzing/README.md)
 - Bug type: double free
 - CVE ID: [CVE-2018-11416](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11416)
 - Download: https://github.com/tjko/jpegoptim
@@ -139,7 +153,7 @@ git checkout d23abf2c59692e0e3638ce8c89d98a3628c686b7
 - Reproduce: `./jpegoptim $POC`
 
 
-### 15. yara [[Detail Info]](./yara/Fuzzing/README.md)
+### 16. yara [[Detail Info]](./yara/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2017-5924](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5924)
 - Download: https://github.com/VirusTotal/yara
@@ -150,21 +164,21 @@ git checkout 890c3f850293176c0e996a602ffa88b315f4e98f
 - Reproduce: `yara $POC strings`
 
 
-### 16. liblouis v3.2.0 [[Detail Info]](./liblouis-3.2.0/Fuzzing/README.md)
+### 17. liblouis v3.2.0 [[Detail Info]](./liblouis-3.2.0/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2017-13741](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-13741)
 - Download: https://github.com/liblouis/liblouis/releases/tag/v3.2.0
 - Reproduce: `./lou_checktable $POC`
 
 
-### 17. GraphicsMagick 1.3.26 [[Detail Info]](./GraphicsMagick-1.3.26/Fuzzing/README.md)
+### 18. GraphicsMagick 1.3.26 [[Detail Info]](./GraphicsMagick-1.3.26/Fuzzing/README.md)
 - Bug type: use-after-free
 - CVE ID: [CVE-2017-11403](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11403)
 - Download: https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.26/
 - Reproduce: `./gm identify $POC`
 
 
-### 18. boringssl-2016-02-12 (In google testsuite) [[Detail Info]](./boringssl-2016-02-12/Fuzzing/README.md)
+### 19. boringssl-2016-02-12 (In google testsuite) [[Detail Info]](./boringssl-2016-02-12/Fuzzing/README.md)
 - Bug type: use-after-free
 - Download: https://github.com/google/fuzzer-test-suite/tree/master/boringssl-2016-02-12
 - Time-cost: >1h
