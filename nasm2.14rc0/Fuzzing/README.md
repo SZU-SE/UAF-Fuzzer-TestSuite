@@ -6,6 +6,14 @@
   git clone git://repo.or.cz/nasm.git
   git checkout 7a81ead31b40392e9b0dff811ac0d3d4653ccfef
   ```
+- Install:
+  ```
+  CC=afl-clang-fast CXX=afl-clang-fast++ CFLAGS="-g -O0 -fsanitize=address" CXXFLAGS="-g -O0 -fsanitize=address" LDFLAGS="-fsanitize=address" ./configure --prefix=$PWD/build
+
+  make
+
+  make install
+  ```
 - Reproduce: `./nasm -f bin $POC -o ./tmp`
 - ASAN dumps the backtrace:
 
