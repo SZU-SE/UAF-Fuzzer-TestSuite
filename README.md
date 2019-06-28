@@ -104,7 +104,7 @@ make sanitize
 
 ### 11. NASM 2.14rc0 [[Detail Info]](./nasm2.14rc0/Fuzzing/README.md)
 - Bug type: use-after-free
-- CVE ID: [CVE-2019-8343](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8343), [CVE-2018-20535](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20535), [CVE-2018-20538](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20538), [CVE-2017-17820](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17820), [CVE-2017-17817](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17817), [CVE-2017-17816](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17814](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17813](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816)
+- CVE ID: [CVE-2019-8343](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8343), [CVE-2018-20535](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20535), [CVE-2018-20538](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20538), [POC-CVE-2018-19216](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-19216), [CVE-2017-17820](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17820), [CVE-2017-17817](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17817), [CVE-2017-17816](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17814](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17813](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816)
 - Download: 
   ```
   git clone git://repo.or.cz/nasm.git

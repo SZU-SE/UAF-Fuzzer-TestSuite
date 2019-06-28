@@ -1,6 +1,6 @@
 ### NASM 2.14.02
 - Bug type: use-after-free
-- CVE ID: [CVE-2019-8343](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8343), [CVE-2018-20535](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20535), [CVE-2018-20538](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20538), [CVE-2017-17820](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17820), [CVE-2017-17817](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17817), [CVE-2017-17816](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17814](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17813](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816)
+- CVE ID: [CVE-2019-8343](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-8343), [CVE-2018-20535](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20535), [CVE-2018-20538](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20538), [POC-CVE-2018-19216](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-19216), [CVE-2017-17820](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17820), [CVE-2017-17817](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17817), [CVE-2017-17816](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17814](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816), [CVE-2017-17813](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-17816)
 - Download: 
   ```
   git clone git://repo.or.cz/nasm.git
@@ -163,7 +163,7 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 Aborted (core dumped)
 ```
 
-**POC-CVE-2019-20535** && **POC-CVE-2017-17816**
+**POC-CVE-2018-20535** && **POC-CVE-2017-17816**
 ```
 =================================================================
 ==19527==ERROR: AddressSanitizer: heap-use-after-free on address 0x60f00000d5a0 at pc 0x000000529261 bp 0x7ffede8e74f0 sp 0x7ffede8e74e8
@@ -231,6 +231,69 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
   Right alloca redzone:    cb
 ==19527==ABORTING
 Aborted (core dumped)
+```
+
+**POC-CVE-2018-19216**
+```
+=================================================================
+==142480==ERROR: AddressSanitizer: heap-use-after-free on address 0x602000008650 at pc 0x000000533a6c bp 0x7ffe4faf41f0 sp 0x7ffe4faf41e8
+READ of size 1 at 0x602000008650 thread T0
+    #0 0x533a6b in detoken /home/hjwang/UAF_Object/nasm_afl_asan/asm/preproc.c:1290:13
+    #1 0x52e94a in pp_getline /home/hjwang/UAF_Object/nasm_afl_asan/asm/preproc.c:5215:24
+    #2 0x4ed70d in assemble_file /home/hjwang/UAF_Object/nasm_afl_asan/asm/nasm.c:1233:24
+    #3 0x4ed70d in main /home/hjwang/UAF_Object/nasm_afl_asan/asm/nasm.c:453
+    #4 0x7f345db7f82f in __libc_start_main /build/glibc-LK5gWL/glibc-2.23/csu/../csu/libc-start.c:291
+    #5 0x4190f8 in _start (/home/hjwang/UAF_Object/nasm_afl_asan/build/bin/nasm+0x4190f8)
+
+0x602000008650 is located 0 bytes inside of 11-byte region [0x602000008650,0x60200000865b)
+freed by thread T0 here:
+    #0 0x4b90a0 in __interceptor_cfree.localalias.0 (/home/hjwang/UAF_Object/nasm_afl_asan/build/bin/nasm+0x4b90a0)
+    #1 0x4f4fe7 in nasm_free /home/hjwang/UAF_Object/nasm_afl_asan/nasmlib/malloc.c:77:9
+    #2 0x52e94a in pp_getline /home/hjwang/UAF_Object/nasm_afl_asan/asm/preproc.c:5215:24
+    #3 0x4ed70d in assemble_file /home/hjwang/UAF_Object/nasm_afl_asan/asm/nasm.c:1233:24
+    #4 0x4ed70d in main /home/hjwang/UAF_Object/nasm_afl_asan/asm/nasm.c:453
+    #5 0x7f345db7f82f in __libc_start_main /build/glibc-LK5gWL/glibc-2.23/csu/../csu/libc-start.c:291
+
+previously allocated by thread T0 here:
+    #0 0x4b9228 in __interceptor_malloc (/home/hjwang/UAF_Object/nasm_afl_asan/build/bin/nasm+0x4b9228)
+    #1 0x4f4d57 in nasm_malloc /home/hjwang/UAF_Object/nasm_afl_asan/nasmlib/malloc.c:47:15
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/hjwang/UAF_Object/nasm_afl_asan/asm/preproc.c:1290:13 in detoken
+Shadow bytes around the buggy address:
+  0x0c047fff9070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff90a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff90b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa 00 05
+=>0x0c047fff90c0: fa fa fd fd fa fa fd fd fa fa[fd]fd fa fa fd fd
+  0x0c047fff90d0: fa fa 02 fa fa fa 07 fa fa fa fd fd fa fa fd fa
+  0x0c047fff90e0: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fff90f0: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fd
+  0x0c047fff9100: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fff9110: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==142480==ABORTING
+Aborted
 ```
 
 **POC-CVE-2017-17820**
