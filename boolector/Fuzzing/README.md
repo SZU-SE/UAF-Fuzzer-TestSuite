@@ -6,6 +6,7 @@
 git clone https://github.com/Boolector/boolector.git
 git checkout 0874a185cd98711b3e4a0b1a0c10e858ff4a23e6
 ```
+- Compile: `CC=wllvm CXX=wllvm++ CFLAGS="-g -O0 -pthread -Wall" CXXFLAGS="-g -O0 -pthread -Wall" LDFLAGS="-lpthread -lrt -ldl" ./configure.sh`
 - Reproduce: `boolector $POC`
 - ASAN:
 ```
